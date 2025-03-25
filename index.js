@@ -8,12 +8,18 @@ const $top = `
     \\|_______|\\|___| \\__\\|_______|\\|__|\\|_______|\\|__|\\|_______|\\|__|\\|__|\\|_______|\\|__|     \\|__\\|__|\\|_______|\\_________\\
                     \\|__|                                                                                       \\|_________|
 `;
-
+let $currentprompt = 'EquilibrumOS> ';
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 $('body').terminal({  
     login: function (username, password) {
-        if (username === 'Monarque' && password === 'password123') {
+        if (username === 'Monarque' && password === 'p') {
+            this.clear();
             this.echo('Login successful. Welcome, ' + username + '!');
+            sleep(2000).then(()=>{
+                location.href = 'Connected.html?username=' + username;})
         } else {
             this.echo('Login failed. Invalid username or password.');
         }
@@ -24,21 +30,27 @@ $('body').terminal({
             +'\nUse the command "help <command>" to get more information about a specific command.',
             login: 'login <username> <password> - Logs in with the specified username and password.',
             about: 'about - Provides information about the system.',
-            contact: 'contact - Provides contact information.',
             clear: 'clear - Clears the terminal screen.',
             exit: 'exit - Exits the terminal.'
         };
-    
         if (commands[command]) {
             this.echo(commands[command]);
         } else {
             this.echo('No information available for command: ' + command);
         }
-    }
-    
-}, { 
+    },
+    about: function() {
+        this.echo('EquilibrumOS 2.5 - Personal assistant - No updates available');
+    },
+    clear: function() {
+        this.clear();
+    },
+    exit: function() {
+        this.echo('Exiting EquilibrumOS 2.5 - Personal assistant...');
+    },
+}, 
+{ 
     greetings: $top +'EquilibrumOS 2.5 - Personal assitant'
-    +' use the command help to know more',
-    prompt: 'EquilibrumOS> ',
-    
+    +' use the command "help f" to know more\n',
+    prompt: $currentprompt    
 }); 
