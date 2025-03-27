@@ -19,7 +19,7 @@ $('body').terminal({
             this.clear();
             this.echo('Login successful. Welcome, ' + username + '!');
             sleep(2000).then(()=>{
-                location.href = 'Connected.html?username=' + username;})
+                location.href = 'connected.html?username=' + username;})
         } else {
             this.echo('Login failed. Invalid username or password.');
         }
