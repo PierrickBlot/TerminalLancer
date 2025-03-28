@@ -15,13 +15,14 @@ function sleep(ms) {
 
 $('body').terminal({  
     login: function (username, password) {
-        if (username === 'Monarque' && password === 'p') {
+        if (username === 'Monarque' && password === 'Vindicateurs') {
             this.clear();
             this.echo('Login successful. Welcome, ' + username + '!');
             sleep(2000).then(()=>{
                 location.href = 'connected.html?username=' + username;})
         } else {
             this.echo('Login failed. Invalid username or password.');
+            this.echo('Clue : Toi et tes amis')
         }
     },
     help: function(command) {
