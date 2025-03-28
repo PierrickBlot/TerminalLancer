@@ -123,7 +123,7 @@ $('body').terminal({
     help: function(command) {
         const commands = {
             show_reality: 'It will show the true wisdom. Try "show_reality all"',
-            f: 'Available commands are: help, login, about, contact, clear, exit'
+            f: 'Available commands are: help, show_reality, login, about, contact, clear, exit'
             +'\nUse the command "help <command>" to get more information about a specific command.',
             clear: 'clear - Clears the terminal screen.',
             exit: 'exit - Exits the terminal.'
